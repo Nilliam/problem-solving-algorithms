@@ -1,13 +1,18 @@
 class Solution {
     public String gcdOfStrings(String str1, String str2) {
-        String divisor = "";
-        for (int i = 0; i < str1.length(); i++) {
-            divisor += str1.charAt(i);
-            if (str1.split(divisor).length == 0
-                    && str2.split(divisor).length == 0) {
-                return divisor;
-            }
+        if (!(str1+str2).equals(str2+str1)) {
+            return "";
         }
-        return "";
+        
+        int a = str1.length();
+        int b = str2.length();
+
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        
+        return str1.substring(0, a);
     }
 }
